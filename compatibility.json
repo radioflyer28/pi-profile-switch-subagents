@@ -10,9 +10,9 @@
     "pi-profile-switch": {
       "repository": "https://github.com/radioflyer28/pi-profile-switch.git",
       "upstream": "https://github.com/VincentFF/pi-profile-switch.git",
-      "ref": "feature/child-profile-resolver",
-      "commit": "6dcde7430cd5ad84b1a1fda65242e4050a6fdcc4",
-      "packageVersion": "0.9.2"
+      "ref": "feat/child-profile-resolver",
+      "commit": "d7b2e0f40c8bf34fd6bfc51071fe964a79f3c16e",
+      "packageVersion": "0.11.0"
     },
     "pi-subagents": {
       "repository": "https://github.com/radioflyer28/pi-subagents.git",

@@ -65,8 +65,9 @@ src/                        -> adapter package
 compatibility.json          -> authoritative supported commit set
 ```
 
-The fork `main` branches track their original upstreams. Adapter work stays on
-`feature/child-profile-resolver` and `feature/child-profile-launch`.
+The fork `main` branches track their original upstreams. The adapter pins
+`feat/child-profile-resolver` (which includes the Windows linkless runtime) and
+`feature/child-profile-launch`.
 
 ## Development dependencies
 

@@ -310,7 +310,7 @@ Local repository:
 
 Pinned fork inputs:
 
-- `radioflyer28/pi-profile-switch` branch `feature/child-profile-resolver`, commit `6dcde7430cd5ad84b1a1fda65242e4050a6fdcc4`
+- `radioflyer28/pi-profile-switch` branch `feat/child-profile-resolver`, commit `d7b2e0f40c8bf34fd6bfc51071fe964a79f3c16e` (pi-profile-switch 0.11.0 plus the Windows linkless runtime)
 - `radioflyer28/pi-subagents` branch `feature/child-profile-launch`, commit `3306622213cbea4660688459a6ccd4e1a8758104`
 - Pi 0.87.1, Node v24.14.0
 
