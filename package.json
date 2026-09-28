@@ -1,0 +1,32 @@
+{
+  "name": "pi-profile-subagents-adapter",
+  "version": "0.0.0-prototype",
+  "description": "Prototype lifecycle adapter between pi-profile-switch resolution and pi-subagents child profiles",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./extension": "./src/extension.ts"
+  },
+  "pi": {
+    "extensions": ["./src/extension.ts"]
+  },
+  "files": ["src", "README.md", "DESIGN.md"],
+  "scripts": {
+    "check": "node ./node_modules/typescript/bin/tsc --noEmit",
+    "test": "node --experimental-strip-types --test test/*.test.ts"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.87.1",
+    "pi-profile-switch": ">=0.9.2",
+    "pi-subagents": ">=0.71.0"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.87.1",
+    "@types/node": "^24.0.0",
+    "pi-profile-switch": ">=0.9.2",
+    "pi-subagents": ">=0.71.0",
+    "typescript": "^5.8.0"
+  }
+}
