@@ -5,6 +5,14 @@
   "type": "module",
   "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radioflyer28/pi-profile-switch-subagents.git"
+  },
+  "homepage": "https://github.com/radioflyer28/pi-profile-switch-subagents#readme",
+  "bugs": {
+    "url": "https://github.com/radioflyer28/pi-profile-switch-subagents/issues"
+  },
   "exports": {
     ".": "./src/index.ts",
     "./extension": "./src/extension.ts"
