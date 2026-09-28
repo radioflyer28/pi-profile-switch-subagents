@@ -4,7 +4,7 @@ import * as path from "node:path";
 import { describe, it } from "node:test";
 
 import { installPiProfileSubagentsAdapter } from "../src/index.ts";
-import { makeAgent, makeMinimalCtx } from "../../../repos/pi-subagents/test/support/helpers.ts";
+import { makeAgent, makeMinimalCtx } from "../node_modules/pi-subagents/test/support/helpers.ts";
 import {
 	available,
 	installSingleExecutionHooks,
@@ -12,7 +12,7 @@ import {
 	mockPi,
 	readCall,
 	tempDir,
-} from "../../../repos/pi-subagents/test/support/single-execution-fixture.ts";
+} from "../node_modules/pi-subagents/test/support/single-execution-fixture.ts";
 
 describe("adapter to public child launch", { skip: !available ? "Pi test packages unavailable" : undefined }, () => {
 	installSingleExecutionHooks();

@@ -1,7 +1,7 @@
 {
-  "name": "pi-profile-subagents-adapter",
-  "version": "0.0.0-prototype",
-  "description": "Prototype lifecycle adapter between pi-profile-switch resolution and pi-subagents child profiles",
+  "name": "pi-profile-switch-subagents",
+  "version": "0.1.0",
+  "description": "Focused lifecycle adapter between pi-profile-switch resolution and pi-subagents child profiles",
   "type": "module",
   "private": true,
   "license": "MIT",
@@ -14,6 +14,7 @@
   },
   "files": ["src", "README.md", "DESIGN.md"],
   "scripts": {
+    "dev:link-local": "node scripts/link-local-prototypes.mjs",
     "check": "node ./node_modules/typescript/bin/tsc --noEmit",
     "test": "node --experimental-strip-types --test test/*.test.ts"
   },

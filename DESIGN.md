@@ -1,8 +1,10 @@
 # Design: focused pi-profile-switch ↔ pi-subagents adapter
 
-Status: **local prototype design; not published or submitted upstream**  
-Prototype package: `pi-profile-subagents-adapter`  
-Prototype version: `0.0.0-prototype`
+Status: **draft design with a local implementation; not published or submitted upstream**
+
+Package: `pi-profile-switch-subagents`
+
+Current version: `0.1.0`
 
 ## 1. Decision summary
 
@@ -47,7 +49,7 @@ seams:
 pi-profile-switch/child-profiles
           | pure resolve(name, cwd, trust)
           v
-pi-profile-subagents-adapter
+pi-profile-switch-subagents
           | ChildProfileProvider registration
           v
 pi-subagents/child-profiles
@@ -231,9 +233,9 @@ Before publishing the adapter, `pi-profile-switch` should expose:
 pi-profile-switch/child-profiles
 ```
 
-with the resolver and contract/model types. The current local adapter prototype
-uses `pi-profile-switch/src/child-profile-resolver.ts` because the prototype
-package ships `src` but has no stable exports map. This deep import is acceptable
+with the resolver and contract/model types. The current local implementation uses
+`pi-profile-switch/src/child-profile-resolver.ts` because the profile package
+ships `src` but has no stable exports map. This deep import is acceptable
 for local proof only and is a publication blocker.
 
 ### Version policy
@@ -257,9 +259,10 @@ The package is both:
 It should be loaded explicitly by the parent. It must not modify normal
 `settings.json` itself. Installation/selection remains an operator action.
 
-The prototype package is `private: true`, uses local dependency symlinks, and is
-not publishable. A publishable version should remove `private`, use released
-public subpaths, add provenance/CI, and test the packed tarball before release.
+The development package is `private: true`, uses local dependency symlinks, and
+is not yet publishable. A publishable version should remove `private`, use
+released public subpaths, add provenance/CI, and test the packed tarball before
+release.
 
 ## 11. Security analysis
 
@@ -284,13 +287,12 @@ What it does not provide:
 The process-global provider registry is trusted host configuration. Only trusted
 extensions should install adapters.
 
-## 12. Prototype and tests
+## 12. Implementation and tests
 
-Local prototype:
+Local repository:
 
 ```text
-/home/akriz/code/pi-profile-subagents-prototype/
-  packages/pi-profile-subagents-adapter/
+/home/akriz/code/pi-profile-switch-subagents/
 ```
 
 Prototype inputs:
@@ -325,13 +327,13 @@ npm test
 
 Current result: typecheck passed; **7 tests passed, 0 failed**. `npm pack
 --dry-run --ignore-scripts` also passed and showed only the two docs, package
-manifest, and two source entrypoints in the prototype tarball.
+manifest, and two source entrypoints in the dry-run tarball.
 
 Evidence logs:
 
-- `/home/akriz/code/pi-profile-subagents-prototype/artifacts/adapter-typecheck.log`
-- `/home/akriz/code/pi-profile-subagents-prototype/artifacts/adapter-tests.log`
-- `/home/akriz/code/pi-profile-subagents-prototype/artifacts/adapter-pack-dry-run.log`
+- `/home/akriz/code/pi-profile-switch-subagents/artifacts/typecheck.log`
+- `/home/akriz/code/pi-profile-switch-subagents/artifacts/tests.log`
+- `/home/akriz/code/pi-profile-switch-subagents/artifacts/pack-dry-run.log`
 
 These adapter tests complement—not replace—the existing `pi-subagents` real
 subprocess sentinel tests and resolver/content-identity tests.
@@ -370,7 +372,7 @@ not improve the narrow integration seam.
    `pi-profile-switch/child-profiles`.
 2. Stabilize the provider registry and `profile` launch field in
    `pi-subagents/child-profiles`.
-3. Replace the prototype deep import with the public resolver subpath.
+3. Replace the current deep import with the public resolver subpath.
 4. Run adapter unit tests plus both upstream compatibility suites.
 5. Add a packed-package smoke test and exact dependency matrix.
 6. Document explicit extension activation and strict-descendant behavior.
@@ -379,7 +381,7 @@ not improve the narrow integration seam.
 
 ## 15. Acceptance criteria
 
-The package is ready beyond prototype only when:
+The package is ready for publication only when:
 
 - both public upstream subpaths are released;
 - no deep imports remain;

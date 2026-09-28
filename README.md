@@ -1,4 +1,4 @@
-# pi-profile-subagents-adapter (prototype)
+# pi-profile-switch-subagents
 
 A focused lifecycle bridge between `pi-profile-switch` profile resolution and
 `pi-subagents` child-profile launches.
@@ -17,8 +17,8 @@ The default extension is intentionally conservative:
 - missing or incompatible resources fail in the owning packages;
 - no settings, active profile, or trust state is written.
 
-A future published package could be loaded explicitly as a Pi extension. This
-prototype is local and private; it has not been installed or published.
+The package can be loaded explicitly as a Pi extension. This development
+checkout remains private and has not been installed or published.
 
 Child selection stays at launch:
 
@@ -33,7 +33,7 @@ await runs.run("review", {
 ## Programmatic API
 
 ```ts
-import { installPiProfileSubagentsAdapter } from "pi-profile-subagents-adapter";
+import { installPiProfileSubagentsAdapter } from "pi-profile-switch-subagents";
 
 const adapter = installPiProfileSubagentsAdapter({
   agentDir: "/home/me/.pi/agent",
@@ -53,22 +53,38 @@ Identical installs in one process are reference-counted. A second install using
 the same provider name but different roots, trust policy, model validator, or
 compatibility settings fails rather than replacing the first registration.
 
-## Prototype dependencies
+## Development dependencies
 
-The prototype uses:
+The current implementation uses:
 
 - `pi-profile-switch/src/child-profile-resolver.ts`
 - `pi-subagents/child-profiles`
 
 Before publication, `pi-profile-switch` should export a stable
-`pi-profile-switch/child-profiles` subpath. The adapter should then stop using
+`pi-profile-switch/child-profiles` subpath. This package should then stop using
 the source-path import. See [DESIGN.md](./DESIGN.md).
+
+## Local development
+
+Until the two upstream API changes are released, link this checkout to the
+adjacent local prototype workspace:
+
+```bash
+npm run dev:link-local
+npm run check
+npm test
+```
+
+Set `PI_PROFILE_PROTOTYPE_ROOT` when the prototype workspace is elsewhere. The
+linking script only replaces existing symbolic links/junctions and refuses to
+replace ordinary dependency directories.
 
 ## Verification
 
 ```bash
 npm run check
 npm test
+npm pack --dry-run --ignore-scripts
 ```
 
 The local test suite covers concurrent resolution, parent-state immutability,

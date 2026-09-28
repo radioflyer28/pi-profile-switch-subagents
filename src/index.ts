@@ -12,7 +12,7 @@ import {
 } from "pi-subagents/child-profiles";
 
 export const ADAPTER_PROVIDER_NAME = "pi-profile-switch";
-export const ADAPTER_PROTOTYPE_VERSION = "0.0.0-prototype";
+export const ADAPTER_VERSION = "0.1.0";
 
 export type AdapterTrustPolicy =
 	| { mode: "deny" }
@@ -46,7 +46,7 @@ interface SharedRegistry {
 	registrations: Map<string, SharedRegistration>;
 }
 
-const SHARED_KEY = Symbol.for("pi-profile-subagents-adapter.registrations.v1");
+const SHARED_KEY = Symbol.for("pi-profile-switch-subagents.registrations.v1");
 
 function sharedRegistry(): SharedRegistry {
 	const root = globalThis as Record<symbol, unknown>;
