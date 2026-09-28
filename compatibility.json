@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "adapter": {
+    "name": "pi-profile-switch-subagents",
+    "version": "0.1.0"
+  },
+  "pi": "0.87.1",
+  "profileContract": 1,
+  "dependencies": {
+    "pi-profile-switch": {
+      "repository": "https://github.com/radioflyer28/pi-profile-switch.git",
+      "upstream": "https://github.com/VincentFF/pi-profile-switch.git",
+      "ref": "feature/child-profile-resolver",
+      "commit": "6dcde7430cd5ad84b1a1fda65242e4050a6fdcc4",
+      "packageVersion": "0.9.2"
+    },
+    "pi-subagents": {
+      "repository": "https://github.com/radioflyer28/pi-subagents.git",
+      "upstream": "https://github.com/nicobailon/pi-subagents.git",
+      "ref": "feature/child-profile-launch",
+      "commit": "3306622213cbea4660688459a6ccd4e1a8758104",
+      "packageVersion": "0.71.0"
+    }
+  }
+}

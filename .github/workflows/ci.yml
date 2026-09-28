@@ -1,0 +1,48 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  adapter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            upstream/pi-profile-switch/package-lock.json
+            upstream/pi-subagents/package-lock.json
+      - name: Install fork dependencies without lifecycle scripts
+        run: |
+          npm ci --ignore-scripts --prefix upstream/pi-profile-switch
+          npm ci --ignore-scripts --prefix upstream/pi-subagents
+      - name: Link pinned workspace dependencies
+        run: npm run dev:link-local
+      - name: Verify pinned compatibility
+        run: npm run verify:compatibility
+      - name: Verify profile-switch fork
+        run: |
+          npm run check --prefix upstream/pi-profile-switch
+          npm test --prefix upstream/pi-profile-switch
+      - name: Verify subagents profile seam
+        run: |
+          npm run typecheck --prefix upstream/pi-subagents
+          cd upstream/pi-subagents
+          node --experimental-strip-types --import ./test/support/isolated-temp-root.mjs --test test/unit/child-profiles.test.ts test/unit/async-recovery-descriptor.test.ts
+          node --experimental-strip-types --import ./test/support/register-loader.mjs --test test/integration/child-profile-launch.test.ts test/integration/child-profile-subprocess.test.ts
+      - name: Typecheck adapter
+        run: npm run check
+      - name: Test adapter
+        run: npm test
+      - name: Verify package contents
+        run: npm pack --dry-run --ignore-scripts

@@ -53,6 +53,21 @@ Identical installs in one process are reference-counted. A second install using
 the same provider name but different roots, trust policy, model validator, or
 compatibility settings fails rather than replacing the first registration.
 
+## Repository layout
+
+This repository is the integration superproject while retaining independent
+upstream histories:
+
+```text
+upstream/pi-profile-switch  -> radioflyer28 feature fork (submodule)
+upstream/pi-subagents       -> radioflyer28 feature fork (submodule)
+src/                        -> adapter package
+compatibility.json          -> authoritative supported commit set
+```
+
+The fork `main` branches track their original upstreams. Adapter work stays on
+`feature/child-profile-resolver` and `feature/child-profile-launch`.
+
 ## Development dependencies
 
 The current implementation uses:
@@ -66,18 +81,22 @@ the source-path import. See [DESIGN.md](./DESIGN.md).
 
 ## Local development
 
-Until the two upstream API changes are released, link this checkout to the
-adjacent local prototype workspace:
+The supported fork revisions are pinned as Git submodules:
 
 ```bash
+git submodule update --init --recursive
+npm ci --ignore-scripts --prefix upstream/pi-profile-switch
+npm ci --ignore-scripts --prefix upstream/pi-subagents
 npm run dev:link-local
+npm run verify:compatibility
 npm run check
 npm test
 ```
 
-Set `PI_PROFILE_PROTOTYPE_ROOT` when the prototype workspace is elsewhere. The
-linking script only replaces existing symbolic links/junctions and refuses to
-replace ordinary dependency directories.
+The linking script targets `upstream/` by default. Set
+`PI_PROFILE_WORKSPACE_ROOT` only when using an equivalent external workspace.
+It replaces existing symbolic links/junctions but refuses to replace ordinary
+dependency directories.
 
 ## Verification
 

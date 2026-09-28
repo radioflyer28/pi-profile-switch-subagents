@@ -12,9 +12,10 @@
   "pi": {
     "extensions": ["./src/extension.ts"]
   },
-  "files": ["src", "README.md", "DESIGN.md"],
+  "files": ["src", "README.md", "DESIGN.md", "compatibility.json"],
   "scripts": {
-    "dev:link-local": "node scripts/link-local-prototypes.mjs",
+    "dev:link-local": "node scripts/link-workspace-deps.mjs",
+    "verify:compatibility": "node scripts/verify-compatibility.mjs",
     "check": "node ./node_modules/typescript/bin/tsc --noEmit",
     "test": "node --experimental-strip-types --test test/*.test.ts"
   },

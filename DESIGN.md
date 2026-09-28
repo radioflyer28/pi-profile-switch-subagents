@@ -238,6 +238,19 @@ with the resolver and contract/model types. The current local implementation use
 ships `src` but has no stable exports map. This deep import is acceptable
 for local proof only and is a publication blocker.
 
+### Fork and superproject policy
+
+- `radioflyer28/pi-profile-switch` and `radioflyer28/pi-subagents` remain normal
+  GitHub forks with independent histories.
+- Each fork keeps `main` aligned with its original upstream and isolates adapter
+  work on one feature branch.
+- This repository is the integration superproject and pins exact feature commits
+  as submodules under `upstream/`.
+- `compatibility.json` is checked against the submodule Git objects and package
+  manifests in CI.
+- Upstream rebases are performed in the fork repositories, tested there, then
+  adopted here by updating the gitlink and compatibility manifest together.
+
 ### Version policy
 
 - Peer-depend on both packages and Pi; do not bundle private copies.
@@ -295,14 +308,16 @@ Local repository:
 /home/akriz/code/pi-profile-switch-subagents/
 ```
 
-Prototype inputs:
+Pinned fork inputs:
 
-- `pi-profile-switch` prototype `6dcde7430cd5ad84b1a1fda65242e4050a6fdcc4`
-- `pi-subagents` prototype `3306622213cbea4660688459a6ccd4e1a8758104`
+- `radioflyer28/pi-profile-switch` branch `feature/child-profile-resolver`, commit `6dcde7430cd5ad84b1a1fda65242e4050a6fdcc4`
+- `radioflyer28/pi-subagents` branch `feature/child-profile-launch`, commit `3306622213cbea4660688459a6ccd4e1a8758104`
 - Pi 0.87.1, Node v24.14.0
 
-Local `node_modules` entries are ignored symlinks to those checked-out prototypes;
-no dependency was installed globally and no postinstall ran for this package.
+Both forks are pinned under `upstream/` as Git submodules. Local `node_modules`
+entries are ignored links to those submodules. `compatibility.json` repeats the
+expected commits and package versions for machine verification. No dependency
+is installed globally and dependency lifecycle scripts are disabled in CI.
 
 Tests exercise:
 
@@ -326,8 +341,9 @@ npm test
 ```
 
 Current result: typecheck passed; **7 tests passed, 0 failed**. `npm pack
---dry-run --ignore-scripts` also passed and showed only the two docs, package
-manifest, and two source entrypoints in the dry-run tarball.
+--dry-run --ignore-scripts` also passed and showed only the two docs,
+compatibility manifest, package manifest, and two source entrypoints in the
+dry-run tarball.
 
 Evidence logs:
 
