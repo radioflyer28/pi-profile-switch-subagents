@@ -1,7 +1,7 @@
 [submodule "upstream/pi-profile-switch"]
 	path = upstream/pi-profile-switch
 	url = https://github.com/radioflyer28/pi-profile-switch.git
-	branch = feature/child-profile-resolver
+	branch = feat/child-profile-resolver
 [submodule "upstream/pi-subagents"]
 	path = upstream/pi-subagents
 	url = https://github.com/radioflyer28/pi-subagents.git

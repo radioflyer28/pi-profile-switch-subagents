@@ -310,8 +310,8 @@ Local repository:
 
 Pinned fork inputs:
 
-- `radioflyer28/pi-profile-switch` branch `feat/child-profile-resolver`, commit `d7b2e0f40c8bf34fd6bfc51071fe964a79f3c16e` (pi-profile-switch 0.11.0 plus the Windows linkless runtime)
-- `radioflyer28/pi-subagents` branch `feature/child-profile-launch`, commit `3306622213cbea4660688459a6ccd4e1a8758104`
+- `radioflyer28/pi-profile-switch` tag `v0.11.0-windows-linkless.1`, commit `86cdb64168a7c0f5aa31b3614f0e2690eaf28e64` (pi-profile-switch 0.11.0 plus the Windows linkless runtime and safe npm-shim launch)
+- `radioflyer28/pi-subagents` tag `v0.71.0-child-profiles.1`, commit `3306622213cbea4660688459a6ccd4e1a8758104`
 - Pi 0.87.1, Node v24.14.0
 
 Both forks are pinned under `upstream/` as Git submodules. Local `node_modules`

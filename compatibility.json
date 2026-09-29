@@ -10,14 +10,14 @@
     "pi-profile-switch": {
       "repository": "https://github.com/radioflyer28/pi-profile-switch.git",
       "upstream": "https://github.com/VincentFF/pi-profile-switch.git",
-      "ref": "feat/child-profile-resolver",
-      "commit": "d7b2e0f40c8bf34fd6bfc51071fe964a79f3c16e",
+      "ref": "v0.11.0-windows-linkless.1",
+      "commit": "86cdb64168a7c0f5aa31b3614f0e2690eaf28e64",
       "packageVersion": "0.11.0"
     },
     "pi-subagents": {
       "repository": "https://github.com/radioflyer28/pi-subagents.git",
       "upstream": "https://github.com/nicobailon/pi-subagents.git",
-      "ref": "feature/child-profile-launch",
+      "ref": "v0.71.0-child-profiles.1",
       "commit": "3306622213cbea4660688459a6ccd4e1a8758104",
       "packageVersion": "0.71.0"
     }

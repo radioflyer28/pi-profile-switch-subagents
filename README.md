@@ -65,9 +65,9 @@ src/                        -> adapter package
 compatibility.json          -> authoritative supported commit set
 ```
 
-The fork `main` branches track their original upstreams. The adapter pins
-`feat/child-profile-resolver` (which includes the Windows linkless runtime) and
-`feature/child-profile-launch`.
+The fork `main` branches track their original upstreams. This release pins
+`v0.11.0-windows-linkless.1` (Windows linkless runtime plus safe npm-shim launch)
+and `v0.71.0-child-profiles.1`.
 
 ## Development dependencies
 
