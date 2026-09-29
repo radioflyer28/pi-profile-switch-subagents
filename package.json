@@ -1,6 +1,6 @@
 {
   "name": "pi-profile-switch-subagents",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Focused lifecycle adapter between pi-profile-switch resolution and pi-subagents child profiles",
   "type": "module",
   "private": true,
@@ -28,15 +28,19 @@
     "test": "node --experimental-strip-types --test test/*.test.ts"
   },
   "peerDependencies": {
-    "@earendil-works/pi-coding-agent": ">=0.87.1",
-    "pi-profile-switch": ">=0.11.0",
-    "pi-subagents": ">=0.71.0"
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "pi-profile-switch": "git+https://github.com/radioflyer28/pi-profile-switch.git#v0.11.0-windows-linkless.2",
+    "pi-subagents": "git+https://github.com/radioflyer28/pi-subagents.git#v0.71.0-child-profiles.1"
   },
   "devDependencies": {
-    "@earendil-works/pi-coding-agent": ">=0.87.1",
     "@types/node": "^24.0.0",
-    "pi-profile-switch": ">=0.11.0",
-    "pi-subagents": ">=0.71.0",
     "typescript": "^5.8.0"
   }
 }

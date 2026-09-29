@@ -4,7 +4,7 @@ Status: **draft design with a local implementation; not published or submitted u
 
 Package: `pi-profile-switch-subagents`
 
-Current version: `0.1.0`
+Current version: `0.1.1`
 
 ## 1. Decision summary
 
@@ -253,7 +253,8 @@ for local proof only and is a publication blocker.
 
 ### Version policy
 
-- Peer-depend on both packages and Pi; do not bundle private copies.
+- Pin both fork packages as immutable Git runtime dependencies for direct Pi Git installation; keep Pi itself as an optional host peer.
+- The duplicated `pi-subagents` module instance is safe because the provider registry is process-global through `Symbol.for("pi-subagents.child-profile-providers.v1")`.
 - Compatibility is governed by the versioned resolved contract, not package
   names alone.
 - Reject unknown contract versions in `pi-subagents`.
@@ -272,10 +273,7 @@ The package is both:
 It should be loaded explicitly by the parent. It must not modify normal
 `settings.json` itself. Installation/selection remains an operator action.
 
-The development package is `private: true`, uses local dependency symlinks, and
-is not yet publishable. A publishable version should remove `private`, use
-released public subpaths, add provenance/CI, and test the packed tarball before
-release.
+The package remains `private: true` for npm publication. Local development uses dependency junctions, while tagged Git installs hydrate the exact fork dependencies declared in `package.json`. A future npm-publishable version should remove `private`, use released public subpaths, add provenance/CI, and test the packed tarball before release.
 
 ## 11. Security analysis
 
@@ -310,7 +308,7 @@ Local repository:
 
 Pinned fork inputs:
 
-- `radioflyer28/pi-profile-switch` tag `v0.11.0-windows-linkless.1`, commit `86cdb64168a7c0f5aa31b3614f0e2690eaf28e64` (pi-profile-switch 0.11.0 plus the Windows linkless runtime and safe npm-shim launch)
+- `radioflyer28/pi-profile-switch` tag `v0.11.0-windows-linkless.2`, commit `091587b0eb28d6df610a3e7e495e929ad95aa91b` (pi-profile-switch 0.11.0 plus the Windows linkless runtime, safe npm-shim launch, and optional Pi host peer)
 - `radioflyer28/pi-subagents` tag `v0.71.0-child-profiles.1`, commit `3306622213cbea4660688459a6ccd4e1a8758104`
 - Pi 0.87.1, Node v24.14.0
 

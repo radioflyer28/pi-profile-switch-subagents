@@ -17,8 +17,7 @@ The default extension is intentionally conservative:
 - missing or incompatible resources fail in the owning packages;
 - no settings, active profile, or trust state is written.
 
-The package can be loaded explicitly as a Pi extension. This development
-checkout remains private and has not been installed or published.
+The package can be loaded explicitly as a Pi extension. The package remains private to npm, but tagged Git releases are directly installable by Pi.
 
 Child selection stays at launch:
 
@@ -66,8 +65,8 @@ compatibility.json          -> authoritative supported commit set
 ```
 
 The fork `main` branches track their original upstreams. This release pins
-`v0.11.0-windows-linkless.1` (Windows linkless runtime plus safe npm-shim launch)
-and `v0.71.0-child-profiles.1`.
+`v0.11.0-windows-linkless.2` (Windows linkless runtime, safe npm-shim launch,
+and optional Pi host peer) and `v0.71.0-child-profiles.1`.
 
 ## Development dependencies
 
@@ -79,6 +78,15 @@ The current implementation uses:
 Before publication, `pi-profile-switch` should export a stable
 `pi-profile-switch/child-profiles` subpath. This package should then stop using
 the source-path import. See [DESIGN.md](./DESIGN.md).
+
+## Install from Git
+
+```bash
+pi install git:github.com/radioflyer28/pi-subagents@v0.71.0-child-profiles.1
+pi install git:github.com/radioflyer28/pi-profile-switch-subagents@v0.1.1
+```
+
+The adapter installs its exact compatible fork dependencies from their immutable Git tags. Pi supplies its own host package at extension load time.
 
 ## Local development
 

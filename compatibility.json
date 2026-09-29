@@ -2,7 +2,7 @@
   "version": 1,
   "adapter": {
     "name": "pi-profile-switch-subagents",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "pi": "0.87.1",
   "profileContract": 1,
@@ -10,8 +10,8 @@
     "pi-profile-switch": {
       "repository": "https://github.com/radioflyer28/pi-profile-switch.git",
       "upstream": "https://github.com/VincentFF/pi-profile-switch.git",
-      "ref": "v0.11.0-windows-linkless.1",
-      "commit": "86cdb64168a7c0f5aa31b3614f0e2690eaf28e64",
+      "ref": "v0.11.0-windows-linkless.2",
+      "commit": "091587b0eb28d6df610a3e7e495e929ad95aa91b",
       "packageVersion": "0.11.0"
     },
     "pi-subagents": {
