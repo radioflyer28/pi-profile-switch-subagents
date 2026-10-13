@@ -1,6 +1,6 @@
 {
   "name": "pi-profile-switch-subagents",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Focused lifecycle adapter between pi-profile-switch resolution and pi-subagents child profiles",
   "type": "module",
   "private": true,
@@ -36,8 +36,8 @@
     }
   },
   "dependencies": {
-    "pi-profile-switch": "git+https://github.com/radioflyer28/pi-profile-switch.git#786242521a44cf547a8084b239a6f169755da8b8",
-    "pi-subagents": "git+https://github.com/radioflyer28/pi-subagents.git#4a63a06f88c8acefa7ae6c0009c365cf045a73e1"
+    "pi-profile-switch": "git+https://github.com/radioflyer28/pi-profile-switch.git#bbfd6ad74c89df7a0282504843dc67891b504218",
+    "pi-subagents": "git+https://github.com/radioflyer28/pi-subagents.git#1d66f20efe453a9fb15e5f782e552a6b0e1c4902"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

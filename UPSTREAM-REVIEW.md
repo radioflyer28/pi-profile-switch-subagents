@@ -2,7 +2,7 @@
 
 ## Scope and method
 
-The initial assessment checked canonical GitHub repository metadata, freshly fetched default branches, upstream release notes, relevant source changes, and non-mutating merge simulations. Following that assessment, the operator authorized local checkpoint/integration commits and a direct-maintainer exception to profile-switch's staged workflow. The integration outcome below supersedes the initial no-integration state. No push, publication, release, or further installed package setting changes were authorized or performed.
+The initial assessment checked canonical GitHub repository metadata, freshly fetched default branches, upstream release notes, relevant source changes, and non-mutating merge simulations. Following that assessment, the operator authorized local checkpoint/integration commits and a direct-maintainer exception to profile-switch's staged workflow. The integration outcome below supersedes the initial no-integration state. Initially, no push or publication was authorized. The operator subsequently approved version bumps, annotated Git tags and pushes to the current integration branches and adapter main. npm publication, GitHub release creation and further installed settings changes remain outside scope.
 
 Fetched snapshots are retained as `refs/upstream-audit/2026-10-13/main` in each corresponding checkout. Commit counts below compare committed fork HEAD against that snapshot; they are not counts of missing features. The initial merge simulations excluded uncommitted fixes. Subsequent integrated validation is recorded below.
 
@@ -84,6 +84,19 @@ The maintained [upstream-sync policy](../pi-pwsh-notify/docs/maintenance/upstrea
 
 ### Distribution and remaining limitations
 
-All new commits and dependency pins are local-only. Fresh remote Git/submodule installation cannot be verified until a separately authorized push makes these commits fetchable. No release tags, publication, deployment, or further installed settings changes were made. Manual TUI, exhaustive provider/remote, and clean-install matrices were not performed. The original shell-less worker-tool report remains unexplained; verification did not widen worker permissions.
+The integration commits were initially local-only. The subsequent Git release authorization covers explicit annotated tags and current-branch pushes, without replacing fork main branches. Fresh remote Git/submodule installation depends on the final release commits being pushed. No npm publication, GitHub release creation, deployment or further installed settings changes are part of this work. Manual TUI, exhaustive provider/remote, and clean-install matrices were not performed. The original shell-less worker-tool report remains unexplained; verification did not widen worker permissions.
 
 One empty permission-probe directory remains at `C:/WINDOWS/Temp/pi-profile-isolation-probe-9479effd-8b71-487c-b82f-b2d351d13b4f`: creation succeeded but ordinary deletion, including `-Force`, was denied. No elevation or ACL changes were attempted. It is not used by the tests.
+
+
+## Authorized Git release refs
+
+| Repository | Tag | Branch | Release commit |
+| --- | --- | --- | --- |
+| pi-compact-till | v0.1.1 | integration/pi-1.2-compat-2026-10-13 | da33df7f8b5ddaddc0d1bd5f86e4fb999aa0a515 |
+| pi-pwsh-notify-secure | v0.5.0-secure.7 | integration/pi-1.2-compat-2026-10-13 | fb392a31c6099501d34d04bd68bafbb2288643f9 |
+| pi-profile-switch | v0.16.0-windows-linkless.1 | integration/upstream-0.16.0-windows-child-profiles | bbfd6ad74c89df7a0282504843dc67891b504218 |
+| pi-subagents | v0.78.0-child-profiles.1 | integration/upstream-0.78.0-child-profiles | 1d66f20efe453a9fb15e5f782e552a6b0e1c4902 |
+| pi-profile-switch-subagents | v0.1.2 | main | commit carrying this report; resolve via the annotated tag |
+
+The four dependency/extension release trees were verified after version changes: compaction 83/83 actual-host tests; PowerShell 64 unit plus 55 integration/codemode actual Pi 1.2 tests; profile-switch 860 passed/9 skipped with the documented bounded timeouts; subagents focused profile-seam tests, both typechecks and built-package dry-run. PowerShell's metadata test and English/Chinese install commands were synchronized to secure.7. The adapter release passed compatibility verification, both typechecks, 7/7 local tests and 7/7 tests using actual Pi 1.2 host peer identities, plus package dry-run (bg-61), before committing/tagging. Pushes are explicitly dependency-first, use maintained origins and do not force-update refs. Remote branch and peeled annotated tag IDs are checked against the local release commits after pushing.

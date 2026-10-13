@@ -17,7 +17,9 @@ The default extension is intentionally conservative:
 - missing or incompatible resources fail in the owning packages;
 - no settings, active profile, or trust state is written.
 
-The package can be loaded explicitly as a Pi extension. The package remains private to npm, but tagged Git releases are directly installable by Pi.
+The package can be loaded explicitly as a Pi extension. It remains private to npm;
+the tagged Git release `v0.1.2` is installable by Pi once the approved release
+refs have been pushed.
 
 Child selection stays at launch:
 
@@ -64,16 +66,14 @@ src/                        -> adapter package
 compatibility.json          -> authoritative supported commit set
 ```
 
-This local integration snapshot pins profile-switch **0.16.0** at
-`786242521a44cf547a8084b239a6f169755da8b8` and subagents **0.78.0** at
-`4a63a06f88c8acefa7ae6c0009c365cf045a73e1`, validated against Pi **1.2.0**.
-Both merges retain the feature-fork behavior, including Windows linkless runtime,
-safe npm-shim launch, strict immutable child profiles, and per-target trust.
-
-**Local-only:** these merge commits have not been pushed or released. The new
-Git dependency pins and submodule revisions cannot be fetched from the maintained
-remotes until a separately authorized push. Use the existing local checkout and
-workspace links below; this snapshot is not a remotely installable release.
+Release **0.1.2** pins profile-switch **0.16.0-windows-linkless.1** at
+`bbfd6ad74c89df7a0282504843dc67891b504218` and subagents
+**0.78.0-child-profiles.1** at `1d66f20efe453a9fb15e5f782e552a6b0e1c4902`,
+validated against Pi **1.2.0**. Both retain the feature-fork behavior, including
+Windows linkless runtime, safe npm-shim launch, strict immutable child profiles,
+and per-target trust. `compatibility.json` owns the exact supported commit set.
+The maintained feature integrations live on their integration branches; the fork
+`main` branches remain upstream tracking branches.
 
 ## Development dependencies
 
@@ -86,17 +86,17 @@ Before publication, `pi-profile-switch` should export a stable
 `pi-profile-switch/child-profiles` subpath. This package should then stop using
 the source-path import. See [DESIGN.md](./DESIGN.md).
 
-## Last published Git release (not this local snapshot)
+## Install from Git
 
 ```bash
-pi install git:github.com/radioflyer28/pi-subagents@v0.71.0-child-profiles.1
-pi install git:github.com/radioflyer28/pi-profile-switch-subagents@v0.1.1
+pi install git:github.com/radioflyer28/pi-subagents@v0.78.0-child-profiles.1
+pi install git:github.com/radioflyer28/pi-profile-switch-subagents@v0.1.2
 ```
 
-The published `v0.1.1` tag uses the older immutable fork tags shown above. The
-working snapshot uses the exact commit pins in `compatibility.json`; do not use
-these historical install commands as instructions to install the new snapshot.
-Pi supplies its own host package at extension load time.
+The adapter uses exact fork commit pins, with corresponding annotated release
+tags. Pi supplies its own host package at extension load time. This is a Git-only
+release: no npm publication is required. The commands above require the approved
+release refs to be present on the maintained remotes.
 
 ## Local development
 
