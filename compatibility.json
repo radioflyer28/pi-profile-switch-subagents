@@ -4,22 +4,22 @@
     "name": "pi-profile-switch-subagents",
     "version": "0.1.1"
   },
-  "pi": "0.87.1",
+  "pi": "1.2.0",
   "profileContract": 1,
   "dependencies": {
     "pi-profile-switch": {
       "repository": "https://github.com/radioflyer28/pi-profile-switch.git",
       "upstream": "https://github.com/VincentFF/pi-profile-switch.git",
-      "ref": "v0.11.0-windows-linkless.2",
-      "commit": "091587b0eb28d6df610a3e7e495e929ad95aa91b",
-      "packageVersion": "0.11.0"
+      "ref": "786242521a44cf547a8084b239a6f169755da8b8",
+      "commit": "786242521a44cf547a8084b239a6f169755da8b8",
+      "packageVersion": "0.16.0"
     },
     "pi-subagents": {
       "repository": "https://github.com/radioflyer28/pi-subagents.git",
       "upstream": "https://github.com/nicobailon/pi-subagents.git",
-      "ref": "v0.71.0-child-profiles.1",
-      "commit": "3306622213cbea4660688459a6ccd4e1a8758104",
-      "packageVersion": "0.71.0"
+      "ref": "4a63a06f88c8acefa7ae6c0009c365cf045a73e1",
+      "commit": "4a63a06f88c8acefa7ae6c0009c365cf045a73e1",
+      "packageVersion": "0.78.0"
     }
   }
 }

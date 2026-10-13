@@ -64,9 +64,16 @@ src/                        -> adapter package
 compatibility.json          -> authoritative supported commit set
 ```
 
-The fork `main` branches track their original upstreams. This release pins
-`v0.11.0-windows-linkless.2` (Windows linkless runtime, safe npm-shim launch,
-and optional Pi host peer) and `v0.71.0-child-profiles.1`.
+This local integration snapshot pins profile-switch **0.16.0** at
+`786242521a44cf547a8084b239a6f169755da8b8` and subagents **0.78.0** at
+`4a63a06f88c8acefa7ae6c0009c365cf045a73e1`, validated against Pi **1.2.0**.
+Both merges retain the feature-fork behavior, including Windows linkless runtime,
+safe npm-shim launch, strict immutable child profiles, and per-target trust.
+
+**Local-only:** these merge commits have not been pushed or released. The new
+Git dependency pins and submodule revisions cannot be fetched from the maintained
+remotes until a separately authorized push. Use the existing local checkout and
+workspace links below; this snapshot is not a remotely installable release.
 
 ## Development dependencies
 
@@ -79,14 +86,17 @@ Before publication, `pi-profile-switch` should export a stable
 `pi-profile-switch/child-profiles` subpath. This package should then stop using
 the source-path import. See [DESIGN.md](./DESIGN.md).
 
-## Install from Git
+## Last published Git release (not this local snapshot)
 
 ```bash
 pi install git:github.com/radioflyer28/pi-subagents@v0.71.0-child-profiles.1
 pi install git:github.com/radioflyer28/pi-profile-switch-subagents@v0.1.1
 ```
 
-The adapter installs its exact compatible fork dependencies from their immutable Git tags. Pi supplies its own host package at extension load time.
+The published `v0.1.1` tag uses the older immutable fork tags shown above. The
+working snapshot uses the exact commit pins in `compatibility.json`; do not use
+these historical install commands as instructions to install the new snapshot.
+Pi supplies its own host package at extension load time.
 
 ## Local development
 
